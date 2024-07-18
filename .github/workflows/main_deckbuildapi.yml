@@ -58,5 +58,5 @@ jobs:
           app-name: 'DeckBuildAPI'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8FCFEE4187F4177B0261BAC32ACB3F4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8FCFEE4187F4177B0261BAC32ACB3F5 }}
 
