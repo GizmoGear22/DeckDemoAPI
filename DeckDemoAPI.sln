@@ -3,12 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APILayer", "APILayer\APILayer.csproj", "{BDC60D2F-2A0A-4FB6-9431-8B77A4973C97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBAccess", "DBAccess\DBAccess.csproj", "{F8B5FBFD-D770-498E-96C6-2CE30F88F057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayer", "LogicLayer\LogicLayer.csproj", "{7F4EE6B3-4C7A-4390-A1B0-AB95218BD34F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDC60D2F-2A0A-4FB6-9431-8B77A4973C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC60D2F-2A0A-4FB6-9431-8B77A4973C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC60D2F-2A0A-4FB6-9431-8B77A4973C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC60D2F-2A0A-4FB6-9431-8B77A4973C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8B5FBFD-D770-498E-96C6-2CE30F88F057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8B5FBFD-D770-498E-96C6-2CE30F88F057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8B5FBFD-D770-498E-96C6-2CE30F88F057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8B5FBFD-D770-498E-96C6-2CE30F88F057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F4EE6B3-4C7A-4390-A1B0-AB95218BD34F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4EE6B3-4C7A-4390-A1B0-AB95218BD34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4EE6B3-4C7A-4390-A1B0-AB95218BD34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4EE6B3-4C7A-4390-A1B0-AB95218BD34F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF0F2A69-4C23-461D-A310-3BA00180446C}
 	EndGlobalSection
 EndGlobal
