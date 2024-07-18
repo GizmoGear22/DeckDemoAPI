@@ -24,7 +24,7 @@ namespace LogicLayer.APIDeleteLogic
 
 		public async Task DeleteCard(CardModel model)
 		{
-			(bool, string)[] checker =
+			(bool, string?)[] checker =
 {
 				await _idValidation.CheckIfIdExists(model),
 				await _idValidation.CheckId(model),

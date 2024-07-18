@@ -11,4 +11,9 @@
     <Folder Include="LogicLayerTests\Validations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LogicLayer\LogicLayer.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+  </ItemGroup>
+
 </Project>

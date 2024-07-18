@@ -42,7 +42,6 @@ namespace LogicLayer.Validation.ValueValidations
 				return (false, message);
 			}
 			else { return (true, null); }
-
 		}
 	}
 }
