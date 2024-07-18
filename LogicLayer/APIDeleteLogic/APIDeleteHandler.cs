@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using LogicLayer.Validation.IDValidationsForPost;
+using LogicLayer.DBDeleteLogic;
+using LogicLayer.Validation.CheckName;
 
 namespace LogicLayer.APIDeleteLogic
 {
 	public class APIDeleteHandler : IAPIDeleteHandler
 	{
-		private readonly IDBDeleteHandler _deleteHandler;
-		private readonly IIdValidation _idValidation;
+		private readonly IDBDeleteHandlers _deleteHandler;
+		private readonly IIDValidations _idValidation;
 		private readonly ICheckIfNameExists _checkIfNameExists;
-		public APIDeleteHandlers(IDBDeleteHandler dbDeleteHandler, IIdValidation idValidation, ICheckIfNameExists checkIfNameExists)
+		public APIDeleteHandler(IDBDeleteHandlers dbDeleteHandler, IIDValidations idValidation, ICheckIfNameExists checkIfNameExists)
 		{
 			_deleteHandler = dbDeleteHandler;
 			_idValidation = idValidation;

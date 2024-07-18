@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DBAccess\DBAccess.csproj" />
     <ProjectReference Include="..\DelegateUtilities\DelegateUtilities.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
