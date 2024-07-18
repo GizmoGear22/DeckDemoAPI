@@ -9,6 +9,7 @@ using LogicLayer.DBPostLogic;
 using LogicLayer.Validation.IDValidationsForPost;
 using LogicLayer.Validation.CheckName;
 using LogicLayer.Validation.ValueValidations;
+using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,14 @@ builder.Services.AddTransient<IAPIDeleteHandler, APIDeleteHandler>();
 builder.Services.AddTransient<ICheckIfNameExists, CheckIfNameExists>();
 builder.Services.AddTransient<IValueValidations, ValueValidations>();
 
+builder.Services.AddCors(options =>
+{
+	options.AddDefaultPolicy(builder =>
+	{
+		builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+	});
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,6 +52,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 

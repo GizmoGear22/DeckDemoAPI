@@ -4,11 +4,13 @@ using LogicLayer.APIDeleteLogic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace APILayer.Controllers
 {
 	[ApiController]
 	[Route("/api/[controller]")]
+	[DisableCors]
 	public class AvailableCardsAPI : Controller
 	{
 		private readonly IAPIGetHandlers _apiGetHandler;
