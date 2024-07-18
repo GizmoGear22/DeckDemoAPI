@@ -15,7 +15,6 @@ namespace DBAccess.DBControllers
 			_connectionHandler = connectionHandler;
 		}
 
-
 		public async Task<List<CardModel>> SeeAllCardOptions()
 		{
 			try
