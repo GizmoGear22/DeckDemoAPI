@@ -1,4 +1,5 @@
-﻿
+﻿using Models;
+
 namespace LogicLayer.DBDeleteLogic
 {
 	public interface IDBDeleteHandlers

@@ -7,7 +7,7 @@ using Microsoft.VisualBasic;
 
 namespace Models
 {
-	internal class CardModel
+	public class CardModel
 	{
 		public int id { get; set; }
 		public string name { get; set; }

@@ -1,4 +1,5 @@
-﻿
+﻿using Models;
+
 namespace LogicLayer.Validation.IDValidationsForPost
 {
 	internal interface IIDValidations

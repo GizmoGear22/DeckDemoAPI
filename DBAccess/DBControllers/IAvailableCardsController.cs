@@ -1,4 +1,5 @@
-﻿
+﻿using Models;
+
 namespace DBAccess.DBControllers
 {
 	public interface IAvailableCardsController

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DelegateUtilities;
+using Models;
 
 namespace LogicLayer.Validation.ValueValidations
 {
 	public class ValueValidations : IValueValidations
 	{
-		ValidationDelegates.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
+		ValidationDelegate.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
 		public async Task<(bool, string)> CheckIfAttackLessThanZero(CardModel card)
 		{
 			if (card.attack < 0)

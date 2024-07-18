@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LogicLayer.APIGetLogic;
+using Models;
+using DelegateUtilities;
 
 namespace LogicLayer.Validation.IDValidationsForPost
 {
 	internal class IDValidations : IIDValidations
 	{
 		private readonly IAPIGetHandlers _handlers;
-		public IdValidation(IAPIGetHandlers handlers)
+		public IDValidations(IAPIGetHandlers handlers)
 		{
 			_handlers = handlers;
 		}
-		ValidationDelegates.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
+		ValidationDelegate.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
 
 		public async Task<(bool, string)> CheckId(CardModel model)
 		{

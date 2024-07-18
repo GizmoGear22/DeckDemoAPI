@@ -1,6 +1,8 @@
-﻿namespace LogicLayer.DBGetLogic
+﻿using Models;
+
+namespace LogicLayer.DBGetLogic
 {
-	internal interface IDBGetHandlers
+	public interface IDBGetHandlers
 	{
 		Task<IEnumerable<CardModel>> GetAllCardsByTypeRepository(CardType type);
 		Task<IEnumerable<CardModel>> GetAllCardsFromRepository();

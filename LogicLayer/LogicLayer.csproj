@@ -11,4 +11,10 @@
     <Folder Include="Utility\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DBAccess\DBAccess.csproj" />
+    <ProjectReference Include="..\DelegateUtilities\DelegateUtilities.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+  </ItemGroup>
+
 </Project>

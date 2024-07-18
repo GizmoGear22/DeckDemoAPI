@@ -1,4 +1,5 @@
-﻿
+﻿using Models;
+
 namespace LogicLayer.APIDeleteLogic
 {
 	public interface IAPIDeleteHandler

@@ -1,4 +1,5 @@
-﻿
+﻿using Models;
+
 namespace LogicLayer.APIPostLogic
 {
 	public interface IAPIPostHandlers

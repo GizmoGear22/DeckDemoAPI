@@ -1,4 +1,5 @@
-﻿
+﻿using Models;
+
 namespace LogicLayer.DBPostLogic
 {
 	public interface IDBPostHandlers

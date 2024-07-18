@@ -1,4 +1,6 @@
-﻿namespace LogicLayer.APIGetLogic
+﻿using Models;
+
+namespace LogicLayer.APIGetLogic
 {
 	public interface IAPIGetHandlers
 	{

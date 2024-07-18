@@ -7,6 +7,7 @@ using Microsoft.VisualBasic;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Data.SqlClient;
+using Models;
 
 namespace DBAccess.DBAccessPoint
 {

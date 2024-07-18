@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
+using Models;
+using LogicLayer.DBGetLogic;
 
 namespace LogicLayer.APIGetLogic
 {

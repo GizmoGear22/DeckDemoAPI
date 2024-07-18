@@ -1,4 +1,5 @@
-﻿
+﻿using Models;
+
 namespace DBAccess.DBAccessPoint
 {
 	public interface IDBCardAccess
