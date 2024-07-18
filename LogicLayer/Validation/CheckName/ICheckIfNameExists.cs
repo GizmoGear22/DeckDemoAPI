@@ -1,4 +1,5 @@
-﻿
+﻿using Models;
+
 namespace LogicLayer.Validation.CheckName
 {
 	public interface ICheckIfNameExists

@@ -9,7 +9,7 @@ using DelegateUtilities;
 
 namespace LogicLayer.Validation.IDValidationsForPost
 {
-	internal class IDValidations : IIDValidations
+	public class IDValidations : IIDValidations
 	{
 		private readonly IAPIGetHandlers _handlers;
 		public IDValidations(IAPIGetHandlers handlers)

@@ -5,6 +5,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using LogicLayer.DBGetLogic;
+using Models;
+using DelegateUtilities;
 
 namespace LogicLayer.Validation.CheckName
 {
@@ -16,7 +18,7 @@ namespace LogicLayer.Validation.CheckName
 			_dBGetHandlers = dbGetHandlers;
 		}
 
-		ValidationDelegates.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
+		ValidationDelegate.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
 		public async Task<(bool, string)> CheckName(CardModel model)
 		{
 			var cards = await _dBGetHandlers.GetAllCardsFromRepository();

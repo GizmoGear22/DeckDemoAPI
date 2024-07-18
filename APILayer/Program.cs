@@ -4,7 +4,9 @@ using LogicLayer.APIDeleteLogic;
 using LogicLayer.APIGetLogic;
 using LogicLayer.APIPostLogic;
 using LogicLayer.DBDeleteLogic;
-using LogicLayer.Validation;
+using LogicLayer.DBGetLogic;
+using LogicLayer.DBPostLogic;
+using LogicLayer.Validation.IDValidationsForPost;
 using LogicLayer.Validation.CheckName;
 using LogicLayer.Validation.ValueValidations;
 
@@ -24,10 +26,10 @@ builder.Services.AddTransient<IAvailableCardsController, AvailableCardsControlle
 builder.Services.AddTransient<IDBGetHandlers, DBGetHandlers>();
 builder.Services.AddTransient<IDBPostHandlers, DBPostHandlers>();
 builder.Services.AddTransient<IAPIGetHandlers, APIGetHandlers>();
-builder.Services.AddTransient<IAPIPostHandler, APIPostHandler>();
-builder.Services.AddTransient<IIdValidation, IdValidation>();
-builder.Services.AddTransient<IDBDeleteHandler, DBDeleteHandler>();
-builder.Services.AddTransient<IAPIDeleteHandlers, APIDeleteHandlers>();
+builder.Services.AddTransient<IAPIPostHandlers, APIPostHandlers>();
+builder.Services.AddTransient<IIDValidations, IDValidations>();
+builder.Services.AddTransient<IDBDeleteHandlers, DBDeleteHandlers>();
+builder.Services.AddTransient<IAPIDeleteHandler, APIDeleteHandler>();
 builder.Services.AddTransient<ICheckIfNameExists, CheckIfNameExists>();
 builder.Services.AddTransient<IValueValidations, ValueValidations>();
 
