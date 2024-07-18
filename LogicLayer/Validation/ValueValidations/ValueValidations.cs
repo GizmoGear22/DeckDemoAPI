@@ -11,7 +11,7 @@ namespace LogicLayer.Validation.ValueValidations
 	public class ValueValidations : IValueValidations
 	{
 		ValidationDelegate.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
-		public async Task<(bool, string)> CheckIfAttackLessThanZero(CardModel card)
+		public async Task<(bool, string?)> CheckIfAttackLessThanZero(CardModel card)
 		{
 			if (card.attack < 0)
 			{
@@ -22,7 +22,7 @@ namespace LogicLayer.Validation.ValueValidations
 			else { return (true, null); }
 		}
 
-		public async Task<(bool, string)> CheckIfDefenseLessThanZero(CardModel card)
+		public async Task<(bool, string?)> CheckIfDefenseLessThanZero(CardModel card)
 		{
 			if (card.defense < 0)
 			{
@@ -33,7 +33,7 @@ namespace LogicLayer.Validation.ValueValidations
 			else { return (true, null); }
 		}
 
-		public async Task<(bool, string)> CheckIfCostLessThanZero(CardModel card)
+		public async Task<(bool, string?)> CheckIfCostLessThanZero(CardModel card)
 		{
 			if (card.cost < 0)
 			{

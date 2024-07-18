@@ -26,9 +26,9 @@ namespace LogicLayer.APIPostLogic
 			_valueValidations = valueValidations;
 		}
 
-		public async Task<(bool isValid, string errorMessage)> PostNewCard(CardModel model)
+		public async Task<(bool isValid, string? errorMessage)> PostNewCard(CardModel model)
 		{
-			var checker = new (bool isValid, string errorMessage)[]
+			var checker = new (bool isValid, string? errorMessage)[]
 			{
 				await _idValidation.CheckIfIdExists(model),
 				await _idValidation.CheckId(model),

@@ -18,7 +18,7 @@ namespace LogicLayer.Validation.IDValidationsForPost
 		}
 		ValidationDelegate.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
 
-		public async Task<(bool, string)> CheckId(CardModel model)
+		public async Task<(bool, string?)> CheckId(CardModel model)
 		{
 
 			if (model.id <= 0)
@@ -33,7 +33,7 @@ namespace LogicLayer.Validation.IDValidationsForPost
 			}
 		}
 
-		public async Task<(bool, string)> CheckIfIdExists(CardModel model)
+		public async Task<(bool, string?)> CheckIfIdExists(CardModel model)
 		{
 			var retrievedModel = await _handlers.GetCardById(model.id);
 			if (retrievedModel.id != 0)
@@ -48,7 +48,7 @@ namespace LogicLayer.Validation.IDValidationsForPost
 			}
 		}
 
-		public async Task<(bool, string)> CheckZeroId(CardModel model)
+		public async Task<(bool, string?)> CheckZeroId(CardModel model)
 		{
 			if (model.id == 0)
 			{

@@ -19,7 +19,7 @@ namespace LogicLayer.Validation.CheckName
 		}
 
 		ValidationDelegate.ValidationMessageDelegate validationMessage = DelegateValidationMessage.ValidationMessage;
-		public async Task<(bool, string)> CheckName(CardModel model)
+		public async Task<(bool, string?)> CheckName(CardModel model)
 		{
 			var cards = await _dBGetHandlers.GetAllCardsFromRepository();
 			foreach (var card in cards)
@@ -39,7 +39,7 @@ namespace LogicLayer.Validation.CheckName
 
 		}
 
-		public async Task<(bool, string)> CheckNameCharacters(CardModel model)
+		public async Task<(bool, string?)> CheckNameCharacters(CardModel model)
 		{
 			if (RegexDefinitions.CheckNameCharacters(model.name))
 			{ return (true, null); }
