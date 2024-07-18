@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using DBAccess.DBControllers;
 using LogicLayer.APIPostLogic;
+using LogicLayer.DBPostLogic;
 using Models;
 using Moq;
+using Xunit;
 
 namespace UnitTests.LogicLayerTests
 {
