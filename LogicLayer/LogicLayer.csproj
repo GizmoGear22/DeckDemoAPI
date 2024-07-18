@@ -8,8 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Validation\" />
     <Folder Include="Utility\" />
+    <Folder Include="Validation\CheckName\" />
+    <Folder Include="Validation\IDValidationsForPost\" />
+    <Folder Include="Validation\ValueValidations\" />
   </ItemGroup>
 
 </Project>
