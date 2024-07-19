@@ -16,12 +16,13 @@ namespace APILayer.Controllers
 		private readonly IAPIGetHandlers _apiGetHandler;
 		private readonly IAPIPostHandlers _postHandler;
 		private readonly IAPIDeleteHandler _deleteHandler;
-		public AvailableCardsAPI(IAPIGetHandlers apiGetHandlers, IAPIPostHandlers postHandler, IAPIDeleteHandler deleteHandler)
+		private readonly ILogger _logger;
+		public AvailableCardsAPI(IAPIGetHandlers apiGetHandlers, IAPIPostHandlers postHandler, IAPIDeleteHandler deleteHandler, ILogger logger)
 		{
 			_apiGetHandler = apiGetHandlers;
 			_postHandler = postHandler;
 			_deleteHandler = deleteHandler;
-
+			_logger = logger;
 		}
 
 		// GET: ViewAllCards
@@ -30,7 +31,16 @@ namespace APILayer.Controllers
 
 		public async Task<IEnumerable<CardModel>> GetAllCards()
 		{
-			var getData = await _apiGetHandler.GetAllCards();
+			IEnumerable<CardModel> getData = null;
+			try
+			{
+				getData = await _apiGetHandler.GetAllCards();
+			}
+			catch (Exception ex) 
+			{ 
+				_logger.LogError(ex, "Didn't get it!"); 
+				throw; 
+			};
 
 			return getData.ToList();
 		}

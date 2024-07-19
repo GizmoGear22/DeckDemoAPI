@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using DBAccess.DBAccessPoint;
 using Models;
+using Microsoft.Extensions.Logging;
 
 namespace DBAccess.DBControllers
 {
 	public class AvailableCardsController : IAvailableCardsController
 	{
 		private readonly IDBCardAccess _connectionHandler;
-		public AvailableCardsController(IDBCardAccess connectionHandler)
+		private readonly ILogger _logger;
+		public AvailableCardsController(IDBCardAccess connectionHandler, ILogger logger)
 		{
 			_connectionHandler = connectionHandler;
+			_logger = logger;
 		}
 
 		public async Task<List<CardModel>> SeeAllCardOptions()
@@ -27,6 +30,7 @@ namespace DBAccess.DBControllers
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
+				_logger.LogError(ex, "Didn't get it in DBAccess");
 				throw;
 			}
 		}
