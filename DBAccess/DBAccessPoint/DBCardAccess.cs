@@ -28,6 +28,7 @@ namespace DBAccess.DBAccessPoint
 			using (var connection = new SqlConnection(CnnVal()))
 				try
 				{
+					connection.Open();
 					var data = await connection.QueryAsync<T>(sqlString);
 					return data.ToList();
 				}
