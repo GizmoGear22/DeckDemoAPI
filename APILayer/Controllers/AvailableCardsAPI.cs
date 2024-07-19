@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Cors;
 namespace APILayer.Controllers
 {
 	[ApiController]
-	[Route("/api/[controller]")]
+	[Route("/api/")]
 	[DisableCors]
 	public class AvailableCardsAPI : Controller
 	{
