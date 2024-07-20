@@ -37,7 +37,7 @@ builder.Services.AddTransient<IValueValidations, ValueValidations>();
 builder.Services.AddCors(options =>
 {
 	options.AddPolicy("CorsPolicy", 
-		builder => builder.WithOrigins("deckbuilderdemo.azurewebsites.net")
+		builder => builder.WithOrigins("https://deckbuilderdemo.azurewebsites.net")
 		.AllowAnyMethod()
 		.AllowCredentials()
 		.AllowAnyHeader());
