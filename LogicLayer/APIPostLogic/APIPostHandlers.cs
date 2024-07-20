@@ -9,6 +9,7 @@ using LogicLayer.Validation.CheckName;
 using LogicLayer.Validation.ValueValidations;
 using LogicLayer.APIPostLogic;
 using Models;
+using Microsoft.Extensions.Logging;
 
 namespace LogicLayer.APIPostLogic
 {
@@ -18,18 +19,22 @@ namespace LogicLayer.APIPostLogic
 		private readonly IIDValidations _idValidation;
 		private readonly ICheckIfNameExists _checkIfNameExists;
 		private readonly IValueValidations _valueValidations;
-		public APIPostHandlers(IDBPostHandlers dbPostHandlers, IIDValidations idValidation, ICheckIfNameExists checkIfNameExists, IValueValidations valueValidations)
+		private readonly ILogger _logger;
+		public APIPostHandlers(IDBPostHandlers dbPostHandlers, IIDValidations idValidation, ICheckIfNameExists checkIfNameExists, IValueValidations valueValidations, ILogger logger)
 		{
 			_dbPostHandlers = dbPostHandlers;
 			_idValidation = idValidation;
 			_checkIfNameExists = checkIfNameExists;
 			_valueValidations = valueValidations;
+			_logger = logger;
 		}
 
 		public async Task<(bool isValid, string? errorMessage)> PostNewCard(CardModel model)
 		{
-			var checker = new (bool isValid, string? errorMessage)[]
+			try
 			{
+				var checker = new (bool isValid, string? errorMessage)[]
+{
 				await _idValidation.CheckIfIdExists(model),
 				await _idValidation.CheckId(model),
 				await _idValidation.CheckZeroId(model),
@@ -38,17 +43,24 @@ namespace LogicLayer.APIPostLogic
 				await _valueValidations.CheckIfCostLessThanZero(model),
 				await _valueValidations.CheckIfAttackLessThanZero(model),
 				await _valueValidations.CheckIfDefenseLessThanZero(model)
-			};
+};
 
-			foreach (var result in checker)
-			{
-				if (!result.isValid)
+				foreach (var result in checker)
 				{
-					return (false, result.errorMessage);
+					if (!result.isValid)
+					{
+						return (false, result.errorMessage);
+					}
 				}
+				await _dbPostHandlers.DBPostHandler(model);
+				return (true, null);
 			}
-			await _dbPostHandlers.DBPostHandler(model);
-			return (true, null);
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "APIPostHandler Failure");
+				throw;
+			}
+
 		}
 	}
 }

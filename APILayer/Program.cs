@@ -30,6 +30,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 //Dependency Injection Services
 builder.Services.AddTransient<IDBCardAccess, DBCardAccess>();
 builder.Services.AddTransient<IAvailableCardsController, AvailableCardsController>();
@@ -42,6 +44,7 @@ builder.Services.AddTransient<IDBDeleteHandlers, DBDeleteHandlers>();
 builder.Services.AddTransient<IAPIDeleteHandler, APIDeleteHandler>();
 builder.Services.AddTransient<ICheckIfNameExists, CheckIfNameExists>();
 builder.Services.AddTransient<IValueValidations, ValueValidations>();
+builder.Services.AddTransient<ILogger>(s => s.GetRequiredService<ILogger<Program>>());
 
 
 
