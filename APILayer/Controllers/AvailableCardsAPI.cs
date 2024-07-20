@@ -10,7 +10,6 @@ namespace APILayer.Controllers
 {
 	[ApiController]
 	[Route("/api/[controller]")]
-	[DisableCors]
 	public class AvailableCardsAPI : Controller
 	{
 		private readonly IAPIGetHandlers _apiGetHandler;

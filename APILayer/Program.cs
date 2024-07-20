@@ -14,6 +14,15 @@ using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("CorsPolicy",
+		builder => builder.WithOrigins("https://deckbuilderdemo.azurewebsites.net")
+		.AllowAnyMethod()
+		.AllowCredentials()
+		.AllowAnyHeader());
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -34,14 +43,7 @@ builder.Services.AddTransient<IAPIDeleteHandler, APIDeleteHandler>();
 builder.Services.AddTransient<ICheckIfNameExists, CheckIfNameExists>();
 builder.Services.AddTransient<IValueValidations, ValueValidations>();
 
-builder.Services.AddCors(options =>
-{
-	options.AddPolicy("CorsPolicy", 
-		builder => builder.WithOrigins("https://deckbuilderdemo.azurewebsites.net")
-		.AllowAnyMethod()
-		.AllowCredentials()
-		.AllowAnyHeader());
-});
+
 
 var app = builder.Build();
 
