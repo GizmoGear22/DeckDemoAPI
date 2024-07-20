@@ -16,13 +16,11 @@ namespace APILayer.Controllers
 		private readonly IAPIGetHandlers _apiGetHandler;
 		private readonly IAPIPostHandlers _postHandler;
 		private readonly IAPIDeleteHandler _deleteHandler;
-		private readonly ILogger _logger;
-		public AvailableCardsAPI(IAPIGetHandlers apiGetHandlers, IAPIPostHandlers postHandler, IAPIDeleteHandler deleteHandler, ILogger logger)
+		public AvailableCardsAPI(IAPIGetHandlers apiGetHandlers, IAPIPostHandlers postHandler, IAPIDeleteHandler deleteHandler)
 		{
 			_apiGetHandler = apiGetHandlers;
 			_postHandler = postHandler;
 			_deleteHandler = deleteHandler;
-			_logger = logger;
 		}
 
 		// GET: ViewAllCards
@@ -38,8 +36,7 @@ namespace APILayer.Controllers
 			}
 			catch (Exception ex) 
 			{ 
-				_logger.LogError(ex, "Didn't get it!"); 
-				throw; 
+				throw ex; 
 			};
 
 			return getData.ToList();

@@ -36,10 +36,11 @@ builder.Services.AddTransient<IValueValidations, ValueValidations>();
 
 builder.Services.AddCors(options =>
 {
-	options.AddDefaultPolicy(builder =>
-	{
-		builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-	});
+	options.AddPolicy("CorsPolicy", 
+		builder => builder.WithOrigins("deckbuilderdemo.azurewebsites.net")
+		.AllowAnyMethod()
+		.AllowCredentials()
+		.AllowAnyHeader());
 });
 
 var app = builder.Build();
@@ -56,7 +57,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors();
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
