@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using LogicLayer.DBGetLogic;
 using Models;
 using DelegateUtilities;
+using LogicLayer.DBLogic;
 
 namespace LogicLayer.Validation.CheckName
 {
 	public class CheckIfNameExists : ICheckIfNameExists
 	{
-		private readonly IDBGetHandlers _dBGetHandlers;
-		public CheckIfNameExists(IDBGetHandlers dbGetHandlers)
+		private readonly IDBLogicHandlers _dBGetHandlers;
+		public CheckIfNameExists(IDBLogicHandlers dbGetHandlers)
 		{
 			_dBGetHandlers = dbGetHandlers;
 		}

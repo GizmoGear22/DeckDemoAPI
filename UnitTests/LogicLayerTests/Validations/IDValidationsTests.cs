@@ -7,7 +7,7 @@ using Xunit;
 using Models;
 using LogicLayer.Validation.IDValidationsForPost;
 using Moq;
-using LogicLayer.APIGetLogic;
+using LogicLayer.APILogic;
 
 namespace UnitTests.LogicLayerTests.Validations
 {
@@ -24,7 +24,7 @@ namespace UnitTests.LogicLayerTests.Validations
 				id = id,
 				name = name,
 			};
-			var mock = new Mock<IAPIGetHandlers>();
+			var mock = new Mock<IAPILogicHandlers>();
 			mock.Setup(x => x.Equals(card)).Returns(true);
 
 			IDValidations validate = new IDValidations(mock.Object);
@@ -45,7 +45,7 @@ namespace UnitTests.LogicLayerTests.Validations
 				id = id,
 				name = name,
 			};
-			var mock = new Mock<IAPIGetHandlers>();
+			var mock = new Mock<IAPILogicHandlers>();
 			mock.Setup(x => x.Equals(card)).Returns(true);
 
 			IDValidations validate = new IDValidations(mock.Object);

@@ -1,9 +1,11 @@
 ﻿using Models;
 
-namespace LogicLayer.DBGetLogic
+namespace LogicLayer.DBLogic
 {
-	public interface IDBGetHandlers
+	public interface IDBLogicHandlers
 	{
+		Task PostCardToRepository(CardModel model);
+		Task DeleteCardFromRepository(CardModel card);
 		Task<IEnumerable<CardModel>> GetAllCardsByTypeRepository(CardType type);
 		Task<IEnumerable<CardModel>> GetAllCardsFromRepository();
 		Task<CardModel> GetCardByIdFromRepository(int id);

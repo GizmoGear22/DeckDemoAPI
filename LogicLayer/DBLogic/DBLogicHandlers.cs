@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 using DBAccess.DBControllers;
 using Models;
 
-namespace LogicLayer.DBGetLogic
+namespace LogicLayer.DBLogic
 {
-	public class DBGetHandlers : IDBGetHandlers
+	public class DBLogicHandlers : IDBLogicHandlers
 	{
 		private readonly IAvailableCardsController _availableCardsController;
-		public DBGetHandlers(IAvailableCardsController availableCardsController)
+		public DBLogicHandlers(IAvailableCardsController availableCardsController)
 		{
 			_availableCardsController = availableCardsController;
 		}
-
 		public async Task<IEnumerable<CardModel>> GetAllCardsFromRepository()
 		{
 			var allCardData = await _availableCardsController.SeeAllCardOptions();
@@ -34,6 +32,16 @@ namespace LogicLayer.DBGetLogic
 		{
 			var data = await _availableCardsController.SeeCardById(id);
 			return data;
+		}
+
+		public async Task PostCardToRepository(CardModel model)
+		{
+			await _availableCardsController.PostNewCardsToDB(model);
+		}
+
+		public async Task DeleteCardFromRepository(CardModel card)
+		{
+			await _availableCardsController.DeleteCardFromDB(card);
 		}
 	}
 }

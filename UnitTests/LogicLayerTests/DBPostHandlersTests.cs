@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DBAccess.DBControllers;
-using LogicLayer.APIPostLogic;
-using LogicLayer.DBPostLogic;
+using LogicLayer.DBLogic;
 using Models;
 using Moq;
 using Xunit;
@@ -20,10 +19,10 @@ namespace UnitTests.LogicLayerTests
 			//arrange
 			CardModel model = new CardModel();
 			var mock = new Mock<IAvailableCardsController>();
-			var handler = new DBPostHandlers(mock.Object);
+			var handler = new DBLogicHandlers(mock.Object);
 
 			//act
-			await handler.DBPostHandler(model);
+			await handler.PostCardToRepository(model);
 
 			//assert
 			mock.Verify(x => x.PostNewCardsToDB(model), Times.Once);

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicLayer.APIGetLogic;
 using Models;
 using DelegateUtilities;
+using LogicLayer.APILogic;
 
 namespace LogicLayer.Validation.IDValidationsForPost
 {
 	public class IDValidations : IIDValidations
 	{
-		private readonly IAPIGetHandlers _handlers;
-		public IDValidations(IAPIGetHandlers handlers)
+		private readonly IAPILogicHandlers _handlers;
+		public IDValidations(IAPILogicHandlers handlers)
 		{
 			_handlers = handlers;
 		}

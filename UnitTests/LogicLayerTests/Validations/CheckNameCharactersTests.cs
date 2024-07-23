@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using Xunit;
 using LogicLayer.Validation.CheckName;
 using Moq;
-using LogicLayer.DBGetLogic;
 using Models;
+using LogicLayer.DBLogic;
 
 namespace UnitTests.LogicLayerTests.Validations
 {
@@ -21,7 +21,7 @@ namespace UnitTests.LogicLayerTests.Validations
 			//arrange
 			var sample = new SampleCardsLists();
 			var sampleList = sample.SampleList();
-			var mock = new Mock<IDBGetHandlers>();
+			var mock = new Mock<IDBLogicHandlers>();
 			mock.Setup(x => x.GetAllCardsFromRepository()).ReturnsAsync(new List<CardModel>(sampleList));
 
 			CheckIfNameExists checkName = new CheckIfNameExists(mock.Object);
@@ -43,7 +43,7 @@ namespace UnitTests.LogicLayerTests.Validations
 			//arrange
 			var sample = new SampleCardsLists();
 			var sampleList = sample.SampleList();
-			var mock = new Mock<IDBGetHandlers>();
+			var mock = new Mock<IDBLogicHandlers>();
 			mock.Setup(x => x.GetAllCardsFromRepository()).ReturnsAsync(new List<CardModel>(sampleList));
 
 			CheckIfNameExists checkName = new CheckIfNameExists(mock.Object);

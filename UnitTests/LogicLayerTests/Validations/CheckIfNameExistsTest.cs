@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicLayer.DBGetLogic;
+using LogicLayer.DBLogic;
 using LogicLayer.Validation.CheckName;
 using Models;
 using Moq;
@@ -23,7 +23,7 @@ namespace UnitTests.LogicLayerTests.Validations
 				name = "Test"
 			};
 
-			var mock = new Mock<IDBGetHandlers>();
+			var mock = new Mock<IDBLogicHandlers>();
 			CheckIfNameExists nameExists = new CheckIfNameExists(mock.Object);
 			//act
 

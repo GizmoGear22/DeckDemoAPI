@@ -7,8 +7,7 @@ using DBAccess.DBControllers;
 using Models;
 using Xunit;
 using Moq;
-using LogicLayer.APIGetLogic;
-using LogicLayer.DBGetLogic;
+using LogicLayer.DBLogic;
 
 namespace UnitTests.LogicLayerTests
 {
@@ -27,7 +26,7 @@ namespace UnitTests.LogicLayerTests
 
 			//Act
 
-			DBGetHandlers handler = new DBGetHandlers(mock.Object);
+			DBLogicHandlers handler = new DBLogicHandlers(mock.Object);
 			var result = await handler.GetAllCardsFromRepository();
 
 
@@ -49,7 +48,7 @@ namespace UnitTests.LogicLayerTests
 			mock.Setup(x => x.SeeCardOptionsByType(CardType.Machine)).ReturnsAsync(typeSampleList);
 
 			//act
-			DBGetHandlers handler = new DBGetHandlers(mock.Object);
+			DBLogicHandlers handler = new DBLogicHandlers(mock.Object);
 			var result = await handler.GetAllCardsByTypeRepository(CardType.Machine);
 
 			//assert

@@ -35,7 +35,7 @@ namespace DBAccess.DBAccessPoint
 				catch (Exception ex)
 				{
 					Console.WriteLine(ex.Message);
-					throw ex;
+					throw;
 				}
 
 		}

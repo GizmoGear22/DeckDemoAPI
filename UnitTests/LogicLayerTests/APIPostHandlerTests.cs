@@ -6,27 +6,30 @@ using System.Threading.Tasks;
 using Moq;
 using Xunit;
 using Models;
-using LogicLayer.APIPostLogic;
-using LogicLayer.DBPostLogic;
 using System.Security.Cryptography.X509Certificates;
 using LogicLayer.Validation.IDValidationsForPost;
 using LogicLayer.Validation.CheckName;
 using LogicLayer.Validation.ValueValidations;
+using LogicLayer.APILogic;
+using Microsoft.Extensions.Logging;
+using LogicLayer.DBLogic;
 
 namespace UnitTests.LogicLayerTests
 {
 	public class APIPostHandlerTests
 	{
-		private readonly Mock<IDBPostHandlers> _postHandlers;
+		private readonly Mock<IDBLogicHandlers> _logicHandlers;
 		private readonly Mock<IIDValidations> _idValidation;
 		private readonly Mock<ICheckIfNameExists> _checkIfNameExists;
 		private readonly Mock<IValueValidations> _valueValidations;
+		private readonly Mock<ILogger> _logging;
 		public APIPostHandlerTests() 
 		{
-			_postHandlers = new Mock<IDBPostHandlers>();
+			_logicHandlers = new Mock<IDBLogicHandlers>();
 			_idValidation = new Mock<IIDValidations>();
 			_checkIfNameExists = new Mock<ICheckIfNameExists>();
 			_valueValidations = new Mock<IValueValidations>();
+			_logging = new Mock<ILogger>();
 		}
 		[Fact]
 		public void APIPostHandlerTest()
@@ -38,7 +41,7 @@ namespace UnitTests.LogicLayerTests
 				name = "Machine Rifle"
 			};
 
-			var handler = new APIPostHandlers(_postHandlers.Object, _idValidation.Object, _checkIfNameExists.Object, _valueValidations.Object);
+			var handler = new APILogicHandlers(_idValidation.Object, _checkIfNameExists.Object, _valueValidations.Object, _logging.Object, _logicHandlers.Object);
 
 			//act
 			_idValidation.Setup(x => x.CheckId(model)).ReturnsAsync((true, null));
@@ -53,7 +56,7 @@ namespace UnitTests.LogicLayerTests
 			var result = handler.PostNewCard(model);
 
 			//assert
-			_postHandlers.Verify(x => x.DBPostHandler(model), Times.Once);
+			_logicHandlers.Verify(x => x.PostCardToRepository(model), Times.Once);
 		}
 	}
 }

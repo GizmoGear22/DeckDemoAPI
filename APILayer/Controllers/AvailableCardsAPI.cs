@@ -1,10 +1,9 @@
-﻿using LogicLayer.APIGetLogic;
-using LogicLayer.APIPostLogic;
-using LogicLayer.APIDeleteLogic;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Microsoft.AspNetCore.Cors;
+using LogicLayer.APILogic;
 
 namespace APILayer.Controllers
 {
@@ -12,14 +11,10 @@ namespace APILayer.Controllers
 	[Route("/api/[controller]")]
 	public class AvailableCardsAPI : Controller
 	{
-		private readonly IAPIGetHandlers _apiGetHandler;
-		private readonly IAPIPostHandlers _postHandler;
-		private readonly IAPIDeleteHandler _deleteHandler;
-		public AvailableCardsAPI(IAPIGetHandlers apiGetHandlers, IAPIPostHandlers postHandler, IAPIDeleteHandler deleteHandler)
+		private readonly IAPILogicHandlers _logicHandlers;
+		public AvailableCardsAPI(IAPILogicHandlers logicHandlers)
 		{
-			_apiGetHandler = apiGetHandlers;
-			_postHandler = postHandler;
-			_deleteHandler = deleteHandler;
+			_logicHandlers = logicHandlers;
 		}
 
 		// GET: ViewAllCards
@@ -28,14 +23,14 @@ namespace APILayer.Controllers
 
 		public async Task<IEnumerable<CardModel>> GetAllCards()
 		{
-			IEnumerable<CardModel> getData = null;
+			IEnumerable<CardModel>? getData = null;
 			try
 			{
-				getData = await _apiGetHandler.GetAllCards();
+				getData = await _logicHandlers.GetAllCards();
 			}
 			catch (Exception ex) 
 			{ 
-				throw ex; 
+				throw; 
 			};
 
 			return getData.ToList();
@@ -56,7 +51,7 @@ namespace APILayer.Controllers
 			{
 				return BadRequest("Type must be of a Machine, Pyro, Alchemy, Tesla or Bio");
 			}
-			var getData = await _apiGetHandler.GetAllCardsByType(model.type);
+			var getData = await _logicHandlers.GetAllCardsByType(model.type);
 			if (getData == null || !getData.Any())
 			{
 				return NotFound("Card Doesn't Exist");
@@ -77,7 +72,7 @@ namespace APILayer.Controllers
 				return BadRequest("Id must be greater than zero");
 			}
 
-			var getData = await _apiGetHandler.GetCardById(id);
+			var getData = await _logicHandlers.GetCardById(id);
 			if (getData != null)
 			{
 				return Ok(getData);
@@ -106,7 +101,7 @@ namespace APILayer.Controllers
 			{
 				model.type = (CardType)type;
 			}
-			var validationResults = await _postHandler.PostNewCard(model);
+			var validationResults = await _logicHandlers.PostNewCard(model);
 			if (!validationResults.isValid)
 			{
 				return BadRequest(validationResults.errorMessage);
@@ -129,8 +124,8 @@ namespace APILayer.Controllers
 			{
 				return BadRequest("Item must not be null");
 			}
-			var card = await _apiGetHandler.GetCardById(model.id);
-			await _deleteHandler.DeleteCard(card);
+			var card = await _logicHandlers.GetCardById(model.id);
+			await _logicHandlers.DeleteCard(card);
 			return Ok(model);
 
 		}

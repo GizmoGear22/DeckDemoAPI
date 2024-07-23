@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Moq;
-using LogicLayer;
-using LogicLayer.APIGetLogic;
+using LogicLayer.APILogic;
 using Models;
 using LogicLayer.Validation.IDValidationsForPost;
 
@@ -24,7 +23,7 @@ namespace UnitTests.LogicLayerTests.Validations
 			};
 
 			//arrange
-			var mock = new Mock<IAPIGetHandlers>();
+			var mock = new Mock<IAPILogicHandlers>();
 			mock.Setup(x => x.GetCardById(tempModel.id)).ReturnsAsync(tempModel);
 
 			//act
