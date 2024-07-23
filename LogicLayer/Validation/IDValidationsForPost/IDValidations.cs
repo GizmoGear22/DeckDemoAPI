@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using Models;
 using DelegateUtilities;
 using LogicLayer.APILogic;
+using LogicLayer.DBLogic;
 
 namespace LogicLayer.Validation.IDValidationsForPost
 {
 	public class IDValidations : IIDValidations
 	{
-		private readonly IAPILogicHandlers _handlers;
-		public IDValidations(IAPILogicHandlers handlers)
+		private readonly IDBLogicHandlers _handlers;
+		public IDValidations(IDBLogicHandlers handlers)
 		{
 			_handlers = handlers;
 		}
@@ -35,7 +36,7 @@ namespace LogicLayer.Validation.IDValidationsForPost
 
 		public async Task<(bool, string?)> CheckIfIdExists(CardModel model)
 		{
-			var retrievedModel = await _handlers.GetCardById(model.id);
+			var retrievedModel = await _handlers.GetCardByIdFromRepository(model.id);
 			if (retrievedModel != null)
 			{
 				string message = "ID already exists";
