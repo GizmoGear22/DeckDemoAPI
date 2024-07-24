@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Moq;
-using LogicLayer.APILogic;
 using Models;
 using LogicLayer.Validation.IDValidationsForPost;
+using LogicLayer.DBLogic;
 
 namespace UnitTests.LogicLayerTests.Validations
 {
@@ -23,8 +23,8 @@ namespace UnitTests.LogicLayerTests.Validations
 			};
 
 			//arrange
-			var mock = new Mock<IAPILogicHandlers>();
-			mock.Setup(x => x.GetCardById(tempModel.id)).ReturnsAsync(tempModel);
+			var mock = new Mock<IDBLogicHandlers>();
+			mock.Setup(x => x.GetCardByIdFromRepository(tempModel.id)).ReturnsAsync(tempModel);
 
 			//act
 			IDValidations id = new IDValidations(mock.Object);
