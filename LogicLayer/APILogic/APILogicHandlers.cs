@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LogicLayer.DBLogic;
+using LogicLayer.Utility;
 using LogicLayer.Validation.CheckName;
 using LogicLayer.Validation.IDValidationsForPost;
 using LogicLayer.Validation.ValueValidations;
@@ -32,16 +33,18 @@ namespace LogicLayer.APILogic
 		{
 			try
 			{
+				var newModel = UpperFirstCharacter.CapitalizeFirstCharacter(model);
+
 				var checker = new (bool isValid, string? errorMessage)[]
 				{
-					await _idValidation.CheckIfIdExists(model),
-					await _idValidation.CheckId(model),
-					await _idValidation.CheckZeroId(model),
-					await _checkIfNameExists.CheckName(model),
-					await _checkIfNameExists.CheckNameCharacters(model),
-					await _valueValidations.CheckIfCostLessThanZero(model),
-					await _valueValidations.CheckIfAttackLessThanZero(model),
-					await _valueValidations.CheckIfDefenseLessThanZero(model)
+					await _idValidation.CheckIfIdExists(newModel),
+					await _idValidation.CheckId(newModel),
+					await _idValidation.CheckZeroId(newModel),
+					await _checkIfNameExists.CheckName(newModel),
+					await _checkIfNameExists.CheckNameCharacters(newModel),
+					await _valueValidations.CheckIfCostLessThanZero(newModel),
+					await _valueValidations.CheckIfAttackLessThanZero(newModel),
+					await _valueValidations.CheckIfDefenseLessThanZero(newModel)
 				};
 
 				foreach (var result in checker)
@@ -51,7 +54,7 @@ namespace LogicLayer.APILogic
 						return (false, result.errorMessage);
 					}
 				}
-				await _logicHandlers.PostCardToRepository(model);
+				await _logicHandlers.PostCardToRepository(newModel);
 				return (true, null);
 			}
 			catch (Exception ex)
